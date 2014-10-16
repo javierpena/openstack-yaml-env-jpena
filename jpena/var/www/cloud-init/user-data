@@ -1,0 +1,49 @@
+#cloud-config
+groups:
+  - jenkins
+users:
+  - default
+  - name: jenkins
+    gecos: eNovance Jenkins User
+    primary-group: jenkins
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh-authorized-keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+3X1kH+qTp3W5K5bO0KxOOySfRRk7qEAdOfl0sm699BPDzmJzSjd9nqGx3p9ack1tORKQoLqZpH1BL8AehiYw7hIj8P2nR6NsIdTUfw4tmEUQup+ShNIxoYkJFkzfXgty582xXG68ug1eopkVUuH4CqfeERG47XIcugie79DoRJ7zQtPlvrIVN/JRMuUL/lobfuIt3VO385fRluqVjrLGx9PFJLkUg31LXfg9sAXQCRSQOXo0nN+b7BEw/keez7/5U/8vwu4kABcZRV93z14xuyRRDlRKIK1SRaYxOMPZfV8z3o+W5PPhyRbgBmzWsS12v9W/PQy2ShsY2IO/qevl jenkins@install-server
+write_files:
+  - path: /etc/sudoers.d/999-jenkins-cloud-init-requiretty
+    permissions: 0440
+    content: |
+      Defaults:jenkins !requiretty
+  - path: /home/jenkins/.ssh/id_rsa
+    permissions: 0400
+    owner: jenkins:jenkins
+    content: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpAIBAAKCAQEAvt19ZB/qk6d1uSuWztCsTjskn0UZO6hAHTn5dLJuvfQTw85i
+      c0o3fZ6hsd6fWnJNbTkSkKC6maR9QS/AHoYmMO4SI/D9p0ejbCHU1H8OLZhFELqf
+      koTSMaGJCRZM314LcufNsVxuvLoNXqKZFVLh+Aqn3hERuO1yHLoInu/Q6ESe80LT
+      5b6yFTfyUTLlC/5aG37iLd1Tt/OX0ZbqlY6yxsfTxSS5FIN9S134PbAF0AkUkDl6
+      NJzfm+wRMP5Hns+/+VP/L8LuJAAXGUVfd89eMbskUQ5USiCtUkWmMTjD2X1fM96P
+      luTz4ckW4AZs1rEtdr/Vvz0MtkobGNiDv6nr5QIDAQABAoIBAQCA0uoxTEF+C4cv
+      xjXxvXKvEsgzH+ZaF8O+dkTi+RQ57aXxgTl961fs18b3UPVpjMCpud3H9FQ+I4HP
+      H7WiZJUebXGdBKmP4JBzCZqnGmKtb5seIXhW4oMksIzXr0+Pa+B6W+6/iU3M4B7q
+      AwEkHV8blcWb4xV9JfbhYMc0z1THj25LiugiK4lJRspkEjFmF9909f7+LlDyqPjr
+      ULb3CTfAvGzk6j8+2p9eNzKjvPd8WfPoxqJ1Y8g+Ibad1QmaGmD2wj9qd3YXRTtF
+      2fLGWbzBWftjuZagzpgEcB4vKM8ad8Werqy339qf+GbOGioGe4+35GWk5hXEh/XK
+      cKbaGfUBAoGBAOyep3H9/enD6wD0oypURDuesl5G84dR6Eqxirwrj9/eNS0sp+vM
+      PBHJOdpj35rV3TCyqB4TJUF0o2QRtVFJPzf95gae6EtmF9/D0RDVdxiMDhuKnkZv
+      l8mNKE/QiUN31ldqTh9xgL//TCftEbejg2HHdSlVOhQhkW0WtGi0uZAhAoGBAM5/
+      eRx/G22OCHrRqQ7gXtHSnh+pxH90iUitxYnkJK40fbDgvg9Jfr8J9OLt/cXANUOh
+      mHijq73DxolP+HxjFYUANuuQLXkvHNUC2XStxxsjX8GvM4/n6Hs1coNH0S7Clh5+
+      l60A0sMooBrQjMnYeykVw0YqlU60nJAJ85OZ/7NFAoGAXKmxB1ohUqeP43rqXwxL
+      AFIgpf0BJ7Ay2PV4UEJ7AH+jsYI4bIY5y/lSt6y/B4LTMVv1rHlw8JY92lV4/VFC
+      +alrqJIYhFaB6PZlbEM8dZd7etupKgpPlfW6oK8Y4hwPC4Ks/3FSq13ONCCJ/LGD
+      JQqYXkxrBzEyI1dt5UdJGCECgYBVIuFACne4d3KvkHlvFLqDL57Z1xiYo+dl+58R
+      9unYmPOpVT+G9fo3sVcxqIWUXmaXd6xxMKnCF1Fnk30Ta5aXuzrpbAwThoUQnZgi
+      LvOEENWN+Tn8/tQu2B5aWeW4ralO8Up/nXNH2xwHcixZm9NLYRmdeDkOthBGopO2
+      KyvtMQKBgQCwpyTkrI57FagMM/k6Od03XPllg3jKSJ6Pn96oeZfOcvw7kBhuJjWt
+      nosU9WkEFFAD4JfKojA8YpYGpmw27PXyUXWp8QhieQmdQ+baNgUWPTZ7hkTkB54U
+      mo1XzIpnzIqACtW8eQeqw61Qq3Nlm89FtyZaNsUhBm64X+5G2Z0L6A==
+      -----END RSA PRIVATE KEY-----
+
