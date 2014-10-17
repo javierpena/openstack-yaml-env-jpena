@@ -1,0 +1,12 @@
+# -*- python -*-
+
+generate({'hostname': 'enovanceha1-3',
+          'mac': ('52:54:00:30:b3:75', # server1
+                  '52:54:00:d7:a6:ed', # server2
+                  '52:54:00:81:d4:f5', # server3
+                  ),
+          'ip': '10.10.10.232-4',
+          'gateway': '10.10.10.1',
+          'netmask': '255.255.255.0',
+          'domainname': 'example.com',
+          })

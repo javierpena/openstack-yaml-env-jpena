@@ -1,0 +1,10 @@
+192.168.1.232 enovanceha-1.example.com enovanceha-1
+192.168.1.233 enovanceha-2.example.com enovanceha-2
+192.168.1.234 enovanceha-3.example.com enovanceha-3
+
+10.10.10.232 enovanceha-1-priv.example.com enovanceha-1-priv
+10.10.10.233 enovanceha-2-priv.example.com enovanceha-2-priv
+10.10.10.234 enovanceha-3-priv.example.com enovanceha-3-priv
+
+192.168.1.229 install-server.example.com install-server
+10.10.10.229 install-server-priv.example.com install-server-priv

@@ -1,6 +1,9 @@
-52:54:00:26:ac:6f 10.10.10.232
-52:54:00:d7:a6:ed 10.10.10.233
-52:54:00:d3:33:8b 10.10.10.234
-52:54:00:5c:05:31 192.168.1.232
-52:54:00:e4:f8:a5 192.168.1.233
-52:54:00:54:6e:48 192.168.1.234
+# machines interface 1 : (ie. eth0)
+52:54:00:99:c5:fe enovanceha-1
+52:54:00:cc:fc:64 enovanceha-3
+52:54:00:e4:f8:a5 enovanceha-2
+
+# machines interface 2 : (ie. eth1)
+52:54:00:30:b3:75 enovanceha-1-priv
+52:54:00:81:d4:f5 enovanceha-3-priv
+52:54:00:d7:a6:ed enovanceha-2-priv
