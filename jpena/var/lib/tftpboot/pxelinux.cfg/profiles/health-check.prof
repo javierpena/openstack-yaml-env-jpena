@@ -5,5 +5,5 @@ timeout 0
 
 LABEL health
 KERNEL vmlinuz
-APPEND initrd=health.pxe SERV=XXX.XXX.XXX.XXX IP=all:dhcp SESSION=install NONETWORKTEST=0 ONSUCCESS=halt ONFAILURE=halt VERBOSE=1
+APPEND initrd=health.pxe SERV=10.10.10.229 IP=all:dhcp SESSION=install NONETWORKTEST=0 ONSUCCESS=halt ONFAILURE=halt VERBOSE=1
 #SMOKE=60
