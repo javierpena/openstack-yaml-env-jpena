@@ -13,10 +13,10 @@ scenario:
 jenkins:
   https://github.com/enovance/jjb-openstack.git
 kernel:
-  http://192.168.1.12/pub/edeploy/vmlinuz
+  http://192.168.1.231/pub/edeploy/vmlinuz
 pxeramdisk:
-  http://192.168.1.12/pub/edeploy/initrd.pxe
+  http://192.168.1.231/pub/edeploy/initrd.pxe
 edeploy:
-  http://192.168.1.12/pub/edeploy
+  http://192.168.1.231/pub/edeploy
 healthramdisk:
-  http://192.168.1.12/pub/edeploy/health.pxe
+  http://192.168.1.231/pub/edeploy/health.pxe
