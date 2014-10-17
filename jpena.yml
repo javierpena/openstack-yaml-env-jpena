@@ -6,7 +6,7 @@ hosts:
     config:
       cloud::logging::agent::syslog_enable: false
       kibana3::manage_ws: false
-  openstack1:
+  enovanceha-1:
     profile: openstack-full
     ip: 192.168.1.232
     config:
@@ -17,7 +17,7 @@ hosts:
       cloud::loadbalancer::keepalived_priority: 49
       cloud::storage::rbd::pools::setup_pools: true
       cloud::object::storage::swift_zone: 1
-  openstack2:
+  enovanceha-2:
     profile: openstack-full
     ip: 192.168.1.233
     config:
@@ -27,7 +27,7 @@ hosts:
       cloud::loadbalancer::keepalived_state: BACKUP
       cloud::loadbalancer::keepalived_priority: 49
       cloud::object::storage::swift_zone: 2
-  openstack3:
+  enovanceha-3:
     profile: openstack-full
     ip: 192.168.1.234
     config:
@@ -84,19 +84,19 @@ config:
   replicas: 3
   statsd_host: 127.0.0.1
   swift_zone:
-    openstack1: 1
-    openstack2: 2
-    openstack3: 3
+    enovanceha-1: 1
+    enovanceha-2: 2
+    enovanceha-3: 3
 
   mysql_root_password: secrete
   mysql_sys_maint_user: sys-maint
   mysql_sys_maint_password: secrete
   galera_clustercheck_dbuser: clustercheck
   galera_clustercheck_dbpassword: clusterpassword!
-  galera_master_name: openstack1
+  galera_master_name: enovanceha-1
 
   db_allowed_hosts:
-    - openstack%
+    - enovanceha-%
     - 192.168.1.%
 
   haproxy_auth: root:secrete
