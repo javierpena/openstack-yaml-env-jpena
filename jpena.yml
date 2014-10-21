@@ -171,7 +171,7 @@ config:
     - sdc
     - sdd
   ceph_fsid: 1234
-  ceph_mon_secret: c2VjcmV0ZQo=
+  ceph_mon_secret: AQAFdUZUwLbCNBAAWtw8c88r5wvf0WdP6gIn4Q==
   cinder_rbd_pool: volumes
   cinder_rbd_user: cinder
 
