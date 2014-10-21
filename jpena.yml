@@ -59,7 +59,7 @@ config:
     - 2.debian.pool.ntp.org
     - 3.debian.pool.ntp.org
 
-  root_password: secrete
+  root_password: "$6$SvLOg5Pk$R2V.EiAdjqw1rrp65f3adfeKMONeL0nAVH65O9eiXFnNoicl7kAAIxT3kkl7XXePI/Y2JdMTEDdSR31CJRvky1"
   
   public_netif: eth1
   internal_netif: eth1
@@ -171,7 +171,7 @@ config:
     - sdc
     - sdd
   ceph_fsid: 1234
-  ceph_mon_secret: secrete
+  ceph_mon_secret: c2VjcmV0ZQo=
   cinder_rbd_pool: volumes
   cinder_rbd_user: cinder
 
