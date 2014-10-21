@@ -38,7 +38,7 @@ hosts:
 config:
   domain: example.com
   user: jenkins
-  puppet_master: 192.168.1.229
+  puppet_master: install-server.example.com
   parallel_steps: 2|4|5
   region: example
   dns_ips: 8.8.8.8
