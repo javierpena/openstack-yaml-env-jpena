@@ -10,6 +10,10 @@ hosts:
     profile: openstack-full
     ip: 192.168.1.232
     config:
+      internal_netif_ip: 10.10.10.232
+      admin_netif_ip: 192.168.1.232
+      storage_netif_ip: 192.168.1.232
+      public_netif_ip: 192.168.1.232
       cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
       cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
       cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
@@ -21,6 +25,10 @@ hosts:
     profile: openstack-full
     ip: 192.168.1.233
     config:
+      internal_netif_ip: 10.10.10.233
+      admin_netif_ip: 192.168.1.233
+      storage_netif_ip: 192.168.1.233
+      public_netif_ip: 192.168.1.233
       cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
       cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
       cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
@@ -31,6 +39,10 @@ hosts:
     profile: openstack-full
     ip: 192.168.1.234
     config:
+      internal_netif_ip: 10.10.10.234
+      admin_netif_ip: 192.168.1.234
+      storage_netif_ip: 192.168.1.234
+      public_netif_ip: 192.168.1.234
       cloud::loadbalancer::keepalived_state: MASTER
       cloud::loadbalancer::keepalived_priority: 50
       cloud::object::storage::swift_zone: 3
