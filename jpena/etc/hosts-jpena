@@ -8,3 +8,5 @@
 
 192.168.1.229 install-server.example.com install-server
 10.10.10.229 install-server-priv.example.com install-server-priv
+
+192.168.1.12 os-ci-admin.ring.enovance.com
