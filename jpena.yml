@@ -172,6 +172,11 @@ config:
     - 10.10.10.233
     - 10.10.10.234
 
+  mgmt_internal_ips:
+    - 10.10.10.232
+    - 10.10.10.233
+    - 10.10.10.234
+
   glance_db_password: secrete
   ks_glance_password: secrete
 
