@@ -202,3 +202,5 @@ config:
 
   syslog_server: install-server
   syslog_port: 514
+  sensu::install_repo: false
+  uchiwa::install_repo: false
