@@ -10,42 +10,40 @@ hosts:
     profile: openstack-full
     ip: 192.168.1.232
     config:
-      internal_netif_ip: 10.10.10.232
-      admin_netif_ip: 192.168.1.232
-      storage_netif_ip: 192.168.1.232
-      public_netif_ip: 192.168.1.232
-      cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
-      cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
-      cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
-      cloud::loadbalancer::keepalived_state: BACKUP
-      cloud::loadbalancer::keepalived_priority: 49
-      cloud::storage::rbd::pools::setup_pools: true
-      cloud::object::storage::swift_zone: 1
+	cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
+	cloud::storage::rbd::osd::cluster_address: "%{hiera('internal_netif_ip')}"
+	cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
+	cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
+	cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
+	cloud::loadbalancer::keepalived_state: BACKUP
+	cloud::loadbalancer::keepalived_priority: 49
+	cloud::storage::rbd::pools::setup_pools: true
+	cloud::storage::rbd::key::enabled: true
+	cloud::object::storage::swift_zone: 1
   enovanceha-2:
     profile: openstack-full
     ip: 192.168.1.233
     config:
-      internal_netif_ip: 10.10.10.233
-      admin_netif_ip: 192.168.1.233
-      storage_netif_ip: 192.168.1.233
-      public_netif_ip: 192.168.1.233
-      cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
-      cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
-      cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
-      cloud::loadbalancer::keepalived_state: BACKUP
-      cloud::loadbalancer::keepalived_priority: 49
-      cloud::object::storage::swift_zone: 2
+	cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
+	cloud::storage::rbd::osd::cluster_address: "%{hiera('internal_netif_ip')}"
+	cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
+	cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
+	cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
+	cloud::loadbalancer::keepalived_state: BACKUP
+	cloud::loadbalancer::keepalived_priority: 49
+	cloud::object::storage::swift_zone: 2
   enovanceha-3:
     profile: openstack-full
     ip: 192.168.1.234
     config:
-      internal_netif_ip: 10.10.10.234
-      admin_netif_ip: 192.168.1.234
-      storage_netif_ip: 192.168.1.234
-      public_netif_ip: 192.168.1.234
-      cloud::loadbalancer::keepalived_state: MASTER
-      cloud::loadbalancer::keepalived_priority: 50
-      cloud::object::storage::swift_zone: 3
+	cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
+	cloud::storage::rbd::osd::cluster_address: "%{hiera('internal_netif_ip')}"
+	cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
+	cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
+	cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
+	cloud::loadbalancer::keepalived_state: MASTER
+	cloud::loadbalancer::keepalived_priority: 50
+	cloud::object::storage::swift_zone: 3
 
 config:
   domain: example.com
@@ -59,7 +57,10 @@ config:
   vip_admin_ip: 192.168.1.235
   vip_admin_fqdn: enovance-vip.example.com
   vip_internal_fqdn: enovance-vip.example.com
-
+  endpoint_proto: https
+  ceilometer_admin_proto: http
+  ceilometer_internal_proto: http
+  ceilometer_public_proto: http
   public_network: 192.168.1.0/24
   internal_network: 192.168.1.0/24
   admin_network: 192.168.1.0/24
@@ -70,7 +71,6 @@ config:
     - 1.debian.pool.ntp.org
     - 2.debian.pool.ntp.org
     - 3.debian.pool.ntp.org
-
   root_password: "$6$SvLOg5Pk$R2V.EiAdjqw1rrp65f3adfeKMONeL0nAVH65O9eiXFnNoicl7kAAIxT3kkl7XXePI/Y2JdMTEDdSR31CJRvky1"
   
   public_netif: eth1
@@ -81,6 +81,11 @@ config:
   lb_internal_netif: eth1
   external_netif: eth0
   gre_netif: eth1
+
+  public_netif_ip: "%{::ipaddress_eth1}"
+  internal_netif_ip: "%{::ipaddress_eth1}"
+  admin_netif_ip: "%{::ipaddress_eth1}"
+  storage_netif_ip: "%{::ipaddress_eth1}"
 
   keystone_db_user: keystone
   keystone_db_password: secrete
@@ -109,10 +114,8 @@ config:
 
   db_allowed_hosts:
     - localhost
-    - enovanceha-1.example.com
-    - enovanceha-2.example.com
-    - enovanceha-3.example.com
     - 192.168.1.%
+    - 10.10.10.%
 
   haproxy_auth: root:secrete
 
@@ -177,6 +180,17 @@ config:
     - 10.10.10.233
     - 10.10.10.234
 
+  mgmt_names:
+    - enovanceha-1
+    - enovanceha-2
+    - enovanceha-3
+
+  spof_cluster_members : 
+    - enovanceha-1 
+    - enovanceha-2 
+    - enovanceha-3
+
+
   glance_db_password: secrete
   ks_glance_password: secrete
 
@@ -190,9 +204,9 @@ config:
   ks_heat_password: secrete
   heat_auth_encryption_key: secrete
   ceph_osd_devices:
-    - sdb
-    - sdc
-    - sdd
+    - vdb
+    - vdc
+    - vdd
   ceph_fsid: 283046c7-a3e8-4431-b63c-133c71599026
   ceph_mon_secret: AQAFdUZUwLbCNBAAWtw8c88r5wvf0WdP6gIn4Q==
   cinder_rbd_pool: volumes
