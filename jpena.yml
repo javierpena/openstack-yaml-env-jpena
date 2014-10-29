@@ -10,28 +10,28 @@ hosts:
     profile: openstack-full
     ip: 192.168.1.232
     config:
-	cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
-	cloud::storage::rbd::osd::cluster_address: "%{hiera('internal_netif_ip')}"
-	cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
-	cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
-	cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
-	cloud::loadbalancer::keepalived_state: BACKUP
-	cloud::loadbalancer::keepalived_priority: 49
-	cloud::storage::rbd::pools::setup_pools: true
-	cloud::storage::rbd::key::enabled: true
-	cloud::object::storage::swift_zone: 1
+        cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
+        cloud::storage::rbd::osd::cluster_address: "%{hiera('internal_netif_ip')}"
+        cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
+        cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
+        cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
+        cloud::loadbalancer::keepalived_state: BACKUP
+        cloud::loadbalancer::keepalived_priority: 49
+        cloud::storage::rbd::pools::setup_pools: true
+        cloud::storage::rbd::key::enabled: true
+        cloud::object::storage::swift_zone: 1
   enovanceha-2:
     profile: openstack-full
     ip: 192.168.1.233
     config:
-	cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
-	cloud::storage::rbd::osd::cluster_address: "%{hiera('internal_netif_ip')}"
-	cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
-	cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
-	cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
-	cloud::loadbalancer::keepalived_state: BACKUP
-	cloud::loadbalancer::keepalived_priority: 49
-	cloud::object::storage::swift_zone: 2
+        cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
+        cloud::storage::rbd::osd::cluster_address: "%{hiera('internal_netif_ip')}"
+        cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
+        cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
+        cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
+        cloud::loadbalancer::keepalived_state: BACKUP
+        cloud::loadbalancer::keepalived_priority: 49
+        cloud::object::storage::swift_zone: 2
   enovanceha-3:
     profile: openstack-full
     ip: 192.168.1.234
